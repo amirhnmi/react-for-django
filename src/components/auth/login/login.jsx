@@ -1,9 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useRef , useContext} from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios"
 import * as yup from "yup"
+import UserContext from "../../../context/user";
+
 
 const Login = () => {
+    const user = useContext(UserContext).User
     const [errors,seteerors] = useState([])
     const [sending,setsending]= useState(false)
 
@@ -45,67 +48,77 @@ const Login = () => {
 
     }
 
-    return (
-        <>
-            <div className="container-fluid">
-                <body className="login-register-body">
-                    <div className="containerr">
-                        <section className="login-box">
-                            <div className="sinematicket-img mb-4">
-                                <img src="https://cinematicket.org/v3.13.8/assets/images/typo_logo.svg" alt="" />
-                            </div>
-                            <div className="login">
-                                <div className="d-flex">
-                                    <div className="">
-                                        {
-                                            errors.length !== 0 && (
-                                                <div className="alert alert-danger">
-                                                    <ul>
-                                                        {
-                                                            errors.map((error, index)=> <li key={index}>{error}</li>)
-                                                        }
-                                                    </ul>
-                                                </div>
-                                            )
-
-                                        }
-                                        <span className="fw-bold ">اگر در سینماتیکت حساب کاربری دارید، وارد شوید.</span>
-                                        <form onSubmit={handleSubmit} className="mt-3">
-                                            <div className="mb-3">
-                                                <label htmlFor="exampleInputEmail1" className="form-label">آدرس ایمیل :</label>
-                                                <input ref={email} type="email" className="form-control" id="exampleInputEmail1" />
+    {
+        user ? (
+            <>
+            return (
+                <>
+                    <div className="container-fluid">
+                        <body className="login-register-body">
+                            <div className="containerr">
+                                <section className="login-box">
+                                    <div className="sinematicket-img mb-4">
+                                        <img src="https://cinematicket.org/v3.13.8/assets/images/typo_logo.svg" alt="" />
+                                    </div>
+                                    <div className="login">
+                                        <div className="d-flex">
+                                            <div className="">
+                                                {
+                                                    errors.length !== 0 && (
+                                                        <div className="alert alert-danger">
+                                                            <ul>
+                                                                {
+                                                                    errors.map((error, index)=> <li key={index}>{error}</li>)
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    )
+        
+                                                }
+                                                <span className="fw-bold ">اگر در سینماتیکت حساب کاربری دارید، وارد شوید.</span>
+                                                <form onSubmit={handleSubmit} className="mt-3">
+                                                    <div className="mb-3">
+                                                        <label htmlFor="exampleInputEmail1" className="form-label">آدرس ایمیل :</label>
+                                                        <input ref={email} name="email" type="email" className="form-control" id="exampleInputEmail1" />
+                                                    </div>
+                                                    <div className="mb-3">
+                                                        <label htmlFor="exampleInputPassword1" className="form-lable">کلمه عبور :</label>
+                                                        <input ref={password} name="password" type="password" className="form-control" id="exampleInputPassword1" />
+                                                    </div>
+                                                    <button disabled={sending} type="submit" className="btn btn-danger"><span className="mx-2">ورود</span></button>
+                                                    <NavLink to="/auth/login/forget_password"><button type="submit" className="btn btn-danger mx-3">کلمه عبور را فراموش کردم</button></NavLink>
+                                                </form>
                                             </div>
-                                            <div className="mb-3">
-                                                <label htmlFor="exampleInputPassword1" className="form-lable">کلمه عبور :</label>
-                                                <input ref={password} type="password" className="form-control" id="exampleInputPassword1" />
+                                        </div>
+        
+                                        <div className="mt-3 register-form">
+                                            <div className="right">
+                                                <span className="fw-bold">اگر در سینماتیکت حساب کاربری ندارید، ثبت نام کنید.</span>
                                             </div>
-                                            <button disabled={sending} type="submit" className="btn btn-danger"><span className="mx-5">ورود</span></button>
-                                        </form>
+                                            <div className="mt-2">
+                                                <NavLink to="/auth/register"><button type="submit" className="btn btn-danger">ایجاد حساب کاربری</button></NavLink>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div className="mt-3 register-form">
-                                    <div className="right">
-                                        <span className="fw-bold">اگر در سینماتیکت حساب کاربری ندارید، ثبت نام کنید.</span>
+                                    <div className="login-svg">
+                                        <img src="images/login&register/login.svg" alt="" />
                                     </div>
-                                    <div className="mt-2">
-                                        <NavLink to="/auth/register"><button type="submit" className="btn btn-danger">ایجاد حساب کاربری</button></NavLink>
+        
+                                    <div className="comeback-to-home">
+                                        <NavLink to="/"><button type="submit" className="btn btn-danger">بازگشت به صفحه اصلی</button></NavLink>
                                     </div>
-                                </div>
+                                </section>
                             </div>
-                            <div className="login-svg">
-                                <img src="images/login&register/login.svg" alt="" />
-                            </div>
-
-                            <div className="comeback-to-home">
-                                <NavLink to="/"><button type="submit" className="btn btn-danger">بازگشت به صفحه اصلی</button></NavLink>
-                            </div>
-                        </section>
+                        </body>
                     </div>
-                </body>
-            </div>
-        </>
-    )
+                </>
+            )
+            </>
+        ):(
+            window.location="/"
+        )
+        
+    }
 }
 
 export default Login;

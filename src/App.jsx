@@ -14,6 +14,9 @@ import ComedyTheaterForm from "./components/dashboard/AdminDashboard/forms/comed
 import ChildrensTheaterForm from "./components/dashboard/AdminDashboard/forms/childrensTheaterForm/childrensTheaterForm";
 import NewsForm from "./components/dashboard/AdminDashboard/forms/newsForm/newsForm";
 import SalesTableForm from "./components/dashboard/AdminDashboard/forms/salesTableForm/salesTableForm";
+import Cinema from "./components/cinema/cinemaList";
+import ForgetPassword from "./components/auth/password_reset/forgetPassword";
+import PasswordReset from "./components/auth/password_reset/passwordReset";
 
 
 function App() {
@@ -24,6 +27,8 @@ function App() {
             <Route path='/auth/login' element={<Login/>}/>
             <Route path='/auth/register' element={<Register/>}/>
             <Route path='/auth/logout' element={<Logout/>}/>
+            <Route path='/auth/login/forget_password' element={<ForgetPassword/>}/>
+            <Route path='/auth/login/password_reset/:token' element={<PasswordReset/>}/>
             <Route path='/user/dashboard' element={<UserDashboard />}/>
             <Route path='/admin/dashboard' element={<AdminDashboard/>}/>
             <Route path='/admin/dashboard/theaterform' element={<TheaterForm/>}/>
@@ -33,6 +38,8 @@ function App() {
             <Route path='/admin/dashboard/childrenstheaterform' element={<ChildrensTheaterForm/>}/>
             <Route path='/admin/dashboard/newsform' element={<NewsForm/>}/>
             <Route path='/admin/dashboard/salestableform' element={<SalesTableForm/>}/>
+            <Route path="/cinema" element={<Cinema/>}/>
+            <Route path="/movie" element={<Home/>}/>
             <Route path="/" element={<Home/>}/>
             <Route path="/*" element={<NotFound/>}/>
           </Routes>

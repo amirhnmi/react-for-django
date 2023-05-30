@@ -41,19 +41,19 @@ const Register = () => {
                                         <form onSubmit={handleSubmit} className="mt-3">
                                             <div className="mb-3">
                                                 <label htmlFor="exampleInputEmail1" className="form-label">آدرس ایمیل :</label>
-                                                <input ref={email} type="email" className="form-control" id="exampleInputEmail1" />
+                                                <input ref={email} name="email" type="email" className="form-control" id="exampleInputEmail1" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="exampleInputuser_name" className="form-label">نام کاربری :</label>
-                                                <input ref={username} type="text" className="form-control" id="exampleInputuser_name" />
+                                                <input ref={username} name="text" type="text" className="form-control" id="exampleInputuser_name" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="exampleInputEmail1" className="form-label">شماره موبایل :</label>
-                                                <input ref={phone_number} type="tell" className="form-control" id="exampleInputEmail1" />
+                                                <input ref={phone_number} name="tell" type="tell" className="form-control" id="exampleInputEmail1" />
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="exampleInputPassword1" className="form-lable">کلمه عبور :</label>
-                                                <input ref={password} type="password" className="form-control" id="exampleInputPassword1" />
+                                                <input ref={password} name="password" type="password" className="form-control" id="exampleInputPassword1" />
                                             </div>
                                             <button type="submit" className="btn btn-danger"><span className="mx-5">ثبت نام</span></button>
                                         </form>

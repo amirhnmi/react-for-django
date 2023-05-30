@@ -16,10 +16,10 @@ function Navbar ({user}) {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link" aria-current="page" href="#">فیلم و تئاتر</a>
+                            <a className="nav-link" aria-current="page" href="/movie">فیلم و تئاتر</a>
                         </li>
                         <li className="nav-item">
-                                <a className="nav-link" href="#">سینما</a>
+                                <a className="nav-link" href="/cinema">سینما</a>
                             
                         </li>
                         <li className="search-box nav-item">
