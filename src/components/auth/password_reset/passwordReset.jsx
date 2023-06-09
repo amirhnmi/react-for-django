@@ -10,7 +10,7 @@ const PasswordReset = () => {
     event.preventDefault();
 
     try {
-    axios.post('http://localhost:4000/auth/password_reset', { token, password }).then(
+    axios.post('http://localhost:4000/accounts/password_reset/', { token, password }).then(
        console.log("password changed")
     );
        alert('Your password has been reset successfully.')

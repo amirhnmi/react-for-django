@@ -11,7 +11,7 @@ const ForgetPassword= ()=>{
         event.preventDefault();
         
         try {
-        axios.post('http://localhost:4000/auth/forget_password', { email }).then(
+        axios.post('http://localhost:4000/accounts/forget_password/', { email }).then(
             console.log("email send")
         );
         alert('An email with instructions to reset your password has been sent.');

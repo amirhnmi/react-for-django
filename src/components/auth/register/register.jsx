@@ -1,9 +1,11 @@
-import { useRef } from "react";
+import { useRef ,useState} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import * as yup from "yup"
 
 const Register = () => {
     const navigate = useNavigate()
+    const [errors,seteerors] = useState([])
 
     const email = useRef(null)
     const username = useRef(null)
@@ -16,11 +18,13 @@ const Register = () => {
 
         const account = { email: email.current.value, username: username.current.value, phone_number: phone_number.current.value, password: password.current.value }
         if (account.email && account.username && account.phone_number && account.password) {
-            axios.post("http://localhost:4000/auth/register", account).then((response) => {
+            axios.post("http://localhost:4000/accounts/register/", account).then((response) => {
                 navigate("/auth/login")
                 console.log(response)
             }).catch((ex) => {
                 console.log(ex)
+                seteerors(ex.response.data.email)
+                // seteerors()
             })
         }
     }
@@ -37,6 +41,18 @@ const Register = () => {
                             <div className="login">
                                 <div className="d-flex">
                                     <div className="">
+                                        {
+                                            errors.length !== 0 && (
+                                                <div className="alert alert-danger">
+                                                    <ul>
+                                                        {
+                                                            errors.map((error, index)=> <li key={index}>{error}</li>)
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            )
+
+                                        }
                                         <span className="fw-bold ">ایجاد حساب کاربری</span>
                                         <form onSubmit={handleSubmit} className="mt-3">
                                             <div className="mb-3">

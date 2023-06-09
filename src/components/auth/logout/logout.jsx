@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 const Logout = ()=>{
     useEffect(()=>{
-        localStorage.removeItem("x-auth-token")
+        localStorage.removeItem("auth_token")
         window.location = "/"
     })
 
